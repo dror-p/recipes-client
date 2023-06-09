@@ -10,6 +10,7 @@ const CreateRecipePage: React.FC = () => {
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [steps, setSteps] = useState<Step[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleAddIngredient = () => {
     setIngredients((prevIngredients) => [...prevIngredients, { id: 0, recipe_id: 0, name: '', amount: 0}]);
@@ -42,6 +43,7 @@ const CreateRecipePage: React.FC = () => {
   };
 
   const handleSubmit = async () => {
+    setIsLoading(true);
     try {
       const recipe: Recipe = {
         id: 0,
@@ -63,6 +65,8 @@ const CreateRecipePage: React.FC = () => {
     } catch (error) {
       console.error('Error creating recipe:', error);
     }
+
+    setIsLoading(false);
   };
 
   const handleStepSelectChange = (index: number, event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -148,8 +152,8 @@ const CreateRecipePage: React.FC = () => {
             Add Step
           </button>
         </div>
-        <button type="button" onClick={handleSubmit}>
-          Create Recipe
+        <button type="button" onClick={handleSubmit} disabled={isLoading}>
+          {isLoading ? 'Creating...' : 'Create Recipe'}
         </button>
       </form>
       <Link to="/">Back to View All Recipes</Link>
