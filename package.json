@@ -1,5 +1,5 @@
 {
-  "name": "transmit-client",
+  "name": "recipes-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

@@ -16,7 +16,7 @@ A cool react app
 
 * git clone "https://github.com/dror-p/recipes-client.git"
 * Open the folder in terminal
-* cd transmit-client
+* cd recipes-client
 * npm install
 * npm start
 * go to http://localhost:4200
